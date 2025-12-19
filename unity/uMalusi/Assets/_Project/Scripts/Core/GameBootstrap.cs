@@ -4,15 +4,23 @@ namespace UMalusi.Core
 {
     public class GameBootstrap : MonoBehaviour
     {
+        private SystemRegistry _systemRegistry;
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            Initialize();
+            _systemRegistry = new SystemRegistry();
+            InitializeSystems();
         }
 
-        private void Initialize()
+        private void InitializeSystems()
         {
-            Debug.Log("[GameBootstrap] Initialization started.");
+            Debug.Log("[GameBootstrap] System initialization started.");
+        }
+
+        private void OnApplicationQuit()
+        {
+            _systemRegistry.ShutdownAll();
         }
     }
 }
