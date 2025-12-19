@@ -14,9 +14,12 @@ namespace UMalusi.Core
         }
 
         private void InitializeSystems()
-        {
-            Debug.Log("[GameBootstrap] System initialization started.");
-        }
+{
+    Debug.Log("[GameBootstrap] System initialization started.");
+
+    _systemRegistry.Register(new UMalusi.Systems.InputSystem());
+}
+
 
         private void OnApplicationQuit()
         {
